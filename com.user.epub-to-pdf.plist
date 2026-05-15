@@ -16,7 +16,7 @@
     </array>
 
     <key>RunAtLoad</key>
-    <false/>
+    <true/>
 
     <key>StandardOutPath</key>
     <string>__HOME__/.local/log/epub-to-pdf.out.log</string>

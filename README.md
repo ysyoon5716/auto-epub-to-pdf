@@ -6,6 +6,18 @@
 
 - macOS
 - [Calibre](https://calibre-ebook.com/download) (`ebook-convert` 명령어)
+- `/bin/bash`에 **전체 디스크 접근 권한(Full Disk Access)** 부여 필요
+
+### 전체 디스크 접근 권한 설정
+
+macOS는 `~/Downloads` 폴더를 프라이버시 보호(TCC) 대상으로 관리하므로, LaunchAgent가 해당 폴더에 접근하려면 `/bin/bash`에 전체 디스크 접근 권한을 부여해야 합니다.
+
+1. **시스템 설정 > 개인정보 보호 및 보안 > 전체 디스크 접근 권한** 열기
+2. **+** 버튼 클릭
+3. `Cmd + Shift + G`로 경로 입력 → `/bin/bash` 입력 후 추가
+4. 토글 활성화
+
+> 이 설정이 없으면 LaunchAgent가 Downloads 폴더의 파일을 인식하지 못합니다.
 
 ## 설치
 

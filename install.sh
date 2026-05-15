@@ -37,7 +37,7 @@ install_script() {
 install_plist() {
     # 기존 에이전트가 있으면 먼저 해제
     if [ -f "$PLIST_DEST" ]; then
-        launchctl unload "$PLIST_DEST" 2>/dev/null || true
+        launchctl bootout "gui/$(id -u)/com.user.epub-to-pdf" 2>/dev/null || true
     fi
 
     # __HOME__ 플레이스홀더를 실제 홈 경로로 치환
@@ -47,7 +47,7 @@ install_plist() {
 
 # 5. LaunchAgent 활성화
 load_agent() {
-    launchctl load "$PLIST_DEST"
+    launchctl bootstrap "gui/$(id -u)" "$PLIST_DEST"
     echo "✓ LaunchAgent 활성화 완료"
 }
 

@@ -7,7 +7,7 @@ echo "=== EPUB → PDF 자동 변환 제거 ==="
 
 # 1. LaunchAgent 비활성화
 if [ -f "$PLIST_DEST" ]; then
-    launchctl unload "$PLIST_DEST" 2>/dev/null || true
+    launchctl bootout "gui/$(id -u)/com.user.epub-to-pdf" 2>/dev/null || true
     rm "$PLIST_DEST"
     echo "✓ LaunchAgent 제거 완료"
 else
