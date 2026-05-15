@@ -21,6 +21,16 @@ convert_to_pdf() {
     local basename="${epub_file%.epub}"
     local pdf_file="${basename}.pdf"
 
+    # 파일 크기가 안정될 때까지 대기 (다운로드 완료 확인)
+    local prev_size=-1
+    local curr_size
+    curr_size=$(stat -f%z "$epub_file" 2>/dev/null || echo 0)
+    while [ "$curr_size" != "$prev_size" ]; do
+        prev_size=$curr_size
+        sleep 2
+        curr_size=$(stat -f%z "$epub_file" 2>/dev/null || echo 0)
+    done
+
     if ebook-convert "$epub_file" "$pdf_file" >> "$LOG_FILE" 2>&1; then
         log_result "성공: $epub_file → $pdf_file"
         send_notification "EPUB → PDF 변환 완료" "✓ $(basename "$pdf_file")"
@@ -47,6 +57,10 @@ find_new_epubs() {
 
 # 메인 실행
 mkdir -p "$(dirname "$LOG_FILE")"
+
+# 다운로드 완료를 기다리기 위해 잠시 대기
+# (WatchPaths는 임시 파일 생성 시점에 트리거될 수 있음)
+sleep 5
 
 new_epubs=$(find_new_epubs)
 
