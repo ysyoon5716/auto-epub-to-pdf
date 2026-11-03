@@ -6,6 +6,7 @@
 
 - macOS
 - [Calibre](https://calibre-ebook.com/download) (`ebook-convert` 명령어)
+  - `/Applications/calibre.app`(또는 `~/Applications`)에 설치하면 PATH 설정 없이 자동 인식
 - `/bin/bash`에 **전체 디스크 접근 권한(Full Disk Access)** 부여 필요
 
 ### 전체 디스크 접근 권한 설정

@@ -7,6 +7,9 @@ INSTALL_LOG="$HOME/.local/log"
 PLIST_NAME="com.user.epub-to-pdf.plist"
 PLIST_DEST="$HOME/Library/LaunchAgents/$PLIST_NAME"
 
+# Calibre .app 설치 시 ebook-convert는 앱 번들 내부에만 존재
+export PATH="/Applications/calibre.app/Contents/MacOS:$HOME/Applications/calibre.app/Contents/MacOS:$PATH"
+
 echo "=== EPUB → PDF 자동 변환 설치 ==="
 
 # 1. 의존성 확인

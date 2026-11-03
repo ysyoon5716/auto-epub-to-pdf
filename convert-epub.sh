@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+export PATH="/opt/homebrew/bin:/usr/local/bin:/Applications/calibre.app/Contents/MacOS:$HOME/Applications/calibre.app/Contents/MacOS:$PATH"
 
 WATCH_DIR="$HOME/Downloads"
 LOG_FILE="$HOME/.local/log/epub-to-pdf.log"
